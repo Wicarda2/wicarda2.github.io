@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nama Kamu — Ray-style Personal Site</title>
+  <!-- gunakan file CSS yang kamu upload (di-sediakan sebagai style.css) -->
+  <link rel="stylesheet" href="/mnt/data/4ffe377e-2f44-4e7a-9690-1191ed47956b.png" />
+  <style>
+    /* fallback minimal styling jika link eksternal tidak tersedia */
+    :root{--bg:#0b0b0b;--fg:#e6e6e6;--accent:#6ee7b7}
+    body{font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg); color:var(--fg); margin:0; padding:24px}
+    .container{max-width:920px;margin:0 auto}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+    .menu{display:flex;gap:12px}
+    a.btn{background:transparent;border:1px solid rgba(255,255,255,.06);padding:8px 12px;border-radius:8px;color:inherit;text-decoration:none}
+    .card{background:rgba(255,255,255,.03);padding:20px;border-radius:12px}
+    .profile{display:flex;gap:18px;align-items:center}
+    .avatar{width:96px;height:96px;border-radius:12px;background:linear-gradient(135deg,#333,#111);display:flex;align-items:center;justify-content:center;font-weight:700}
+    h1{margin:0;font-size:28px}
+    h2{margin:6px 0 12px;color:var(--accent)}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px}
+    .profile-info p{margin:6px 0}
+    .skills .skill{margin:10px 0}
+    .lang-theme{display:flex;gap:8px;align-items:center}
+    @media(max-width:880px){.grid{grid-template-columns:1fr} .menu{display:none}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div><strong>&lt;Ray.Dev/&gt;</strong></div>
+      <nav class="menu">
+        <a class="btn" href="#home">Home</a>
+        <a class="btn" href="#timeline">Timeline</a>
+        <a class="btn" href="#project">Project</a>
+      </nav>
+      <div class="lang-theme">
+        <select id="lang" aria-label="language">
+          <option value="id">Bahasa</option>
+          <option value="en">English</option>
+        </select>
+        <button id="themeBtn" class="btn">Light</button>
+      </div>
+    </header>
+
+    <section id="home" class="card">
+      <div class="profile">
+        <div class="avatar">KS</div>
+        <div class="profile-info">
+          <h1 id="name">Nama Kamu</h1>
+          <h2 id="role">Software Engineer</h2>
+
+          <p><strong>Phone</strong><br><span id="phone">+62 81X XXX XX66</span></p>
+          <hr>
+          <p><strong>Email</strong><br><span id="email">email@domain.com</span></p>
+          <hr>
+          <p><strong>Location</strong><br><span id="location">Kota, Indonesia</span></p>
+          <hr>
+          <p><strong>Birthday</strong><br><span id="birthday">March 06, 1998</span></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <main>
+        <section id="about" class="card" style="margin-top:0">
+          <h3>About Me</h3>
+          <p id="aboutText">Hi there.. I'm a Software Engineer with experience in building applications across both Back-end and Front-end, for Web and Mobile platforms. Comfortable working with modern frameworks like Flutter, Next.js, and Node.js.</p>
+        </section>
+
+        <section id="what" class="card">
+          <h3>What I Do?</h3>
+          <div>
+            <h4>Back-end Developer</h4>
+            <ul>
+              <li>Developing and maintaining backend APIs for Web and Mobile.</li>
+              <li>Design and manage relational database structures.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Front-end Developer</h4>
+            <p>Building user interfaces with Next.js and mobile UI with Flutter, focusing on performance and UX.</p>
+          </div>
+        </section>
+
+        <section id="skills" class="card">
+          <h3>Skill</h3>
+          <div class="skills">
+            <div class="skill"><strong>Ruby On Rails</strong> — 98%</div>
+            <div class="skill"><strong>Flutter</strong> — 95%</div>
+            <div class="skill"><strong>Next JS</strong> — 95%</div>
+            <div class="skill"><strong>React JS</strong> — 90%</div>
+          </div>
+        </section>
+      </main>
+
+      <aside>
+        <section class="card">
+          <h4>Id Card</h4>
+          <p style="font-size:14px;">Tambahkan foto profil dan detail singkat di sini.</p>
+        </section>
+
+        <section class="card" style="margin-top:12px">
+          <h4>Links</h4>
+          <p><a href="#">GitHub</a> • <a href="#">LinkedIn</a> • <a href="#">Twitter</a></p>
+        </section>
+      </aside>
+    </div>
+
+    <footer style="margin-top:18px;text-align:center;color:rgba(255,255,255,.6)">Template: Ray-style • Disiapkan untuk kamu — ganti konten di HTML dan gunakan style.css yang kamu upload.</footer>
+  </div>
+
+  <script>
+    // Theme toggle (simple)
+    const themeBtn = document.getElementById('themeBtn');
+    let light = false;
+    themeBtn.addEventListener('click', ()=>{
+      light = !light;
+      if(light){document.documentElement.style.setProperty('--bg','#ffffff');document.documentElement.style.setProperty('--fg','#0b0b0b');themeBtn.textContent='Dark'}
+      else{document.documentElement.style.setProperty('--bg','#0b0b0b');document.documentElement.style.setProperty('--fg','#e6e6e6');themeBtn.textContent='Light'}
+    });
+
+    // Language switch (minimal — replaces a few strings)
+    const lang = document.getElementById('lang');
+    lang.addEventListener('change', e=>{
+      if(e.target.value==='en'){
+        document.getElementById('aboutText').textContent = "Hi there.. I'm a Software Engineer experienced in building Web & Mobile apps using Flutter, Next.js and Node.js.";
+        document.querySelector('h3').textContent = 'About Me';
+      } else {
+        document.getElementById('aboutText').textContent = "Hi there.. Saya seorang Software Engineer dengan pengalaman membangun aplikasi Web dan Mobile menggunakan Flutter, Next.js, dan Node.js.";
+      }
+    });
+  </script>
+</body>
+</html>
